@@ -4,34 +4,22 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Cut Studio , Book an Appointment</title>
+    <title>The Cut Studio, Book an Appointment</title>
 
-    <!-- Bootstrap 5 , handles the grid, spacing utilities, and responsive helpers -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- Google Fonts , Playfair Display (headings) + DM Sans (body) -->
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap"
         rel="stylesheet" />
 
-    <!-- All our custom styles live here, nothing in the HTML -->
     <link href="static/styles.css" rel="stylesheet" />
 </head>
 
 <body>
 
-
-    <!-- 
-     HEADER
-     Dark top bar. Logo left, 3 quick-info chips right.
-     The chips (address/hours/phone) are hidden on mobile
-     via d-none d-md-flex , feel free to adjust breakpoint IYW.
-     To add a chip, just duplicate one of the .hdr-chip divs.
-      -->
     <header class="site-header py-2">
         <div class="container-xl d-flex align-items-center justify-content-between gap-3 flex-wrap">
 
-            <!-- Logo: the "TC" square mark + business name + tagline -->
             <div class="d-flex align-items-center gap-2">
                 <div class="logo-mark">TC</div>
                 <div>
@@ -40,7 +28,6 @@
                 </div>
             </div>
 
-            <!-- Quick-info chips , hidden on mobile, visible md and up -->
             <div class="d-none d-md-flex align-items-center gap-4">
                 <div class="hdr-chip">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -71,29 +58,14 @@
         </div>
     </header>
 
-
-    <!-- 
-     HERO STRIP
-     Dark gradient banner with the page headline.
-     Keep the copy short , user should be in the form
-     within a few seconds of landing here.
-      -->
     <section class="hero py-5">
         <div class="container-xl py-2">
             <div class="hero-eyebrow mb-2">Online Booking</div>
             <h1 class="display-5 mb-3">Book your appointment<br>in under 2 minutes.</h1>
-            <p class="mb-0">Pick a service, choose your stylist, grab a time slot , done. No phone calls needed.</p>
+            <p class="mb-0">Pick a service, choose your stylist, grab a time slot, done. No phone calls needed.</p>
         </div>
     </section>
 
-
-    <!-- 
-     INFO BAR
-     4-column strip showing address, hours, phone, rating.
-     This reassures the user they're in the right place
-     before they start filling in the form.
-     Uses Bootstrap col-6 col-md-3 so it's 2-up on mobile.
-      -->
     <div class="info-bar py-3">
         <div class="container-xl">
             <div class="row g-3 align-items-center">
@@ -167,28 +139,22 @@
         </div>
     </div>
 
-
-    <!-- 
-     MAIN BOOKING LAYOUT
-     Left column = the 4 step cards (8/12 wide on xl).
-     Right column = sticky summary sidebar (4/12 wide).
-     On mobile they stack naturally. Nothing fancy here,
-     just standard Bootstrap rows and cols.
-      -->
     <div class="container-xl py-5">
         <div class="row g-4 align-items-start">
 
 
-            <!-- LEFT COLUMN: step-by-step booking flow -->
             <div class="col-lg-7 col-xl-8">
 
+                <div class="selection-summary p-3 p-sm-4 mb-4">
+                    <div class="summary-title mb-2">You chose</div>
+                    <div class="summary-chips">
+                        <span class="summary-chip">Signature Cut</span>
+                        <span class="summary-chip">Marcus L.</span>
+                        <span class="summary-chip">Fri, Feb 21 · 11:15 AM</span>
+                    </div>
+                    <div class="summary-note">Change any step below to update your booking.</div>
+                </div>
 
-                <!-- 
-           PROGRESS INDICATOR
-           Shows the user where they are in the 4-step
-           flow. Update the .done / .active / .wait classes
-           in JS as the user moves through steps.
-            -->
                 <div class="progress-row mb-4 px-1">
                     <div class="prog-dot done">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -199,12 +165,17 @@
                     <span class="prog-label done ms-1 me-2 d-none d-sm-inline">Service</span>
                     <div class="prog-line done"></div>
 
-                    <div class="prog-dot active ms-2">2</div>
-                    <span class="prog-label active ms-1 me-2 d-none d-sm-inline">Stylist</span>
-                    <div class="prog-line"></div>
+                    <div class="prog-dot done ms-2">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </div>
+                    <span class="prog-label done ms-1 me-2 d-none d-sm-inline">Stylist</span>
+                    <div class="prog-line done"></div>
 
-                    <div class="prog-dot wait ms-2">3</div>
-                    <span class="prog-label wait ms-1 me-2 d-none d-sm-inline">Date &amp; Time</span>
+                    <div class="prog-dot active ms-2">3</div>
+                    <span class="prog-label active ms-1 me-2 d-none d-sm-inline">Date &amp; Time</span>
                     <div class="prog-line"></div>
 
                     <div class="prog-dot wait ms-2">4</div>
@@ -212,16 +183,8 @@
                 </div>
 
 
-                <!-- 
-           STEP 1 , SERVICE SELECTION
-           Currently showing the "done" state (user has
-           already picked a service). In your real app
-           this will be the first thing they see.
-           Add .selected to whichever card the user picks.
-            -->
                 <div class="booking-card p-4 mb-4">
 
-                    <!-- Step header: badge + title + subtitle -->
                     <div class="d-flex align-items-center gap-3 mb-4">
                         <div class="step-badge done">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -235,12 +198,10 @@
                         </div>
                     </div>
 
-                    <!-- 2-column service card grid -->
                     <div class="row g-3">
 
-                        <!-- Service card: SELECTED state shown as an example -->
                         <div class="col-sm-6">
-                            <div class="service-card selected p-3 h-100">
+                            <div class="service-card selected p-3 h-100" aria-pressed="true">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
                                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -253,6 +214,9 @@
                                         </svg>
                                     </div>
                                 </div>
+                                <img class="service-photo mb-2" src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=640&q=80"
+                                    alt="Short haircut with clean fade" />
+                                <div class="service-meta mb-2">Short cut · Clean fade</div>
                                 <div class="service-name mb-1">Signature Cut</div>
                                 <div class="card-sub mb-2">Full cut with wash, style &amp; finish</div>
                                 <div class="d-flex justify-content-between align-items-center pt-2 border-top">
@@ -268,10 +232,8 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Service card: default (not selected) state -->
                         <div class="col-sm-6">
-                            <div class="service-card p-3 h-100">
+                            <div class="service-card p-3 h-100" aria-pressed="false">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
                                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -284,6 +246,9 @@
                                         </svg>
                                     </div>
                                 </div>
+                                <img class="service-photo mb-2" src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=640&q=80"
+                                    alt="Hot towel shave with straight razor" />
+                                <div class="service-meta mb-2">Smooth finish · Hot towel</div>
                                 <div class="service-name mb-1">Hot Towel Shave</div>
                                 <div class="card-sub mb-2">Straight-razor shave + hot towel treatment</div>
                                 <div class="d-flex justify-content-between align-items-center pt-2 border-top">
@@ -301,7 +266,7 @@
                         </div>
 
                         <div class="col-sm-6">
-                            <div class="service-card p-3 h-100">
+                            <div class="service-card p-3 h-100" aria-pressed="false">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
                                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -317,6 +282,9 @@
                                         </svg>
                                     </div>
                                 </div>
+                                <img class="service-photo mb-2" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=640&q=80"
+                                    alt="Haircut with beard trim" />
+                                <div class="service-meta mb-2">Cut + beard finish</div>
                                 <div class="service-name mb-1">Cut + Shave Combo</div>
                                 <div class="card-sub mb-2">Signature Cut followed by Hot Towel Shave</div>
                                 <div class="d-flex justify-content-between align-items-center pt-2 border-top">
@@ -334,7 +302,7 @@
                         </div>
 
                         <div class="col-sm-6">
-                            <div class="service-card p-3 h-100">
+                            <div class="service-card p-3 h-100" aria-pressed="false">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
                                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -350,6 +318,9 @@
                                         </svg>
                                     </div>
                                 </div>
+                                <img class="service-photo mb-2" src="https://images.unsplash.com/photo-1500840216050-6ffa99d75160?auto=format&fit=crop&w=640&q=80"
+                                    alt="Scalp treatment and massage" />
+                                <div class="service-meta mb-2">Relaxing scalp care</div>
                                 <div class="service-name mb-1">Scalp Treatment</div>
                                 <div class="card-sub mb-2">Deep massage + nourishing oil &amp; wash</div>
                                 <div class="d-flex justify-content-between align-items-center pt-2 border-top">
@@ -368,32 +339,25 @@
 
                     </div>
 
-                    <!-- Step footer: hint text left, Continue button right -->
-                    <div class="d-flex justify-content-between align-items-center mt-4">
-                        <small class="text-muted">All prices include tax. No hidden fees.</small>
-                        <button class="btn btn-copper">
-                            Continue
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="9 18 15 12 9 6" />
-                            </svg>
-                        </button>
+                    <div class="selected-note mt-4">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        Selection saved: Signature Cut
                     </div>
 
                 </div>
 
-
-                <!-- 
-           STEP 2 , STYLIST SELECTION
-           Currently showing the "active" state , WE NEED TO ADD JS TO THIS.. this is
-           the step the user is on right now in the mockup.
-           Same card pattern as services, just 3 columns.
-           
-            -->
                 <div class="booking-card p-4 mb-4">
 
                     <div class="d-flex align-items-center gap-3 mb-4">
-                        <div class="step-badge active">2</div>
+                        <div class="step-badge done">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
                         <div>
                             <div class="card-title-d">Pick Your Stylist</div>
                             <div class="card-sub">All certified. Meet the team before you book.</div>
@@ -402,9 +366,8 @@
 
                     <div class="row g-3">
 
-                        <!-- Stylist card: SELECTED state shown as example -->
                         <div class="col-sm-4">
-                            <div class="team-card selected p-3">
+                            <div class="team-card selected p-3" aria-pressed="true">
                                 <div class="avatar avatar-a mb-2">M</div>
                                 <div class="team-name">Marcus L.</div>
                                 <div class="team-role mb-2">Master Barber</div>
@@ -416,7 +379,7 @@
                         </div>
 
                         <div class="col-sm-4">
-                            <div class="team-card p-3">
+                            <div class="team-card p-3" aria-pressed="false">
                                 <div class="avatar avatar-b mb-2">S</div>
                                 <div class="team-name">Sofia R.</div>
                                 <div class="team-role mb-2">Senior Stylist</div>
@@ -428,7 +391,7 @@
                         </div>
 
                         <div class="col-sm-4">
-                            <div class="team-card p-3">
+                            <div class="team-card p-3" aria-pressed="false">
                                 <div class="avatar avatar-c mb-2">J</div>
                                 <div class="team-name">James T.</div>
                                 <div class="team-role mb-2">Shave Specialist</div>
@@ -441,47 +404,34 @@
 
                     </div>
 
-                    <div class="d-flex justify-content-between align-items-center mt-4">
-                        <small class="text-muted">No preference? We'll match you with the first available.</small>
-                        <button class="btn btn-copper">
-                            Continue
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="9 18 15 12 9 6" />
-                            </svg>
-                        </button>
+                    <div class="selected-note mt-4">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        Selection saved: Marcus L.
                     </div>
 
                 </div>
 
-
-                <!-- 
-           STEP 3 , DATE AND TIME SELECTION
-           Currently locked (.locked class on the card) because
-           the user hasn't finished step 2 yet. we need to remove .locked
-           in JS once they confirm a stylist.
-            -->
-                <div class="booking-card p-4 mb-4 locked">
+                <div class="booking-card p-4 mb-4">
 
                     <div class="d-flex align-items-center gap-3 mb-4">
-                        <div class="step-badge wait">3</div>
+                        <div class="step-badge active">3</div>
                         <div>
-                            <!-- Using .muted class because this step is locked -->
-                            <div class="card-title-d muted">Choose a Date &amp; Time</div>
+                            <div class="card-title-d">Choose a Date &amp; Time</div>
                             <div class="card-sub">Available slots shown in real time.</div>
                         </div>
                     </div>
 
-                    <!-- Month navigation row -->
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <button class="btn btn-sm btn-outline-secondary rounded-2">&#8249;</button>
                         <span class="cal-month-label">February 2026</span>
                         <button class="btn btn-sm btn-outline-secondary rounded-2">&#8250;</button>
                     </div>
 
-                    <!-- Calendar grid , day labels + day cells, i just did it dynamically instead of library bc its not a full app-->
                     <div class="d-flex flex-wrap gap-1 mb-3">
-                        <!-- Day of week headers -->
+                        
                         <div class="cal-label">Sun</div>
                         <div class="cal-label">Mon</div>
                         <div class="cal-label">Tue</div>
@@ -490,7 +440,6 @@
                         <div class="cal-label">Fri</div>
                         <div class="cal-label">Sat</div>
 
-                        <!-- Days in the past , not clickable -->
                         <div class="cal-day past">1</div>
                         <div class="cal-day past">2</div>
                         <div class="cal-day past">3</div>
@@ -500,10 +449,8 @@
                         <div class="cal-day past">7</div>
                         <div class="cal-day past">8</div>
                         <div class="cal-day past">9</div>
-                         <!-- Today -->
 
                         <div class="cal-day today ">10</div>
-                        <!-- Future days , all clickable -->
 
                         <div class="cal-day ">11</div>
                         <div class="cal-day ">12</div>
@@ -515,7 +462,7 @@
                         <div class="cal-day">18</div>
                         <div class="cal-day">19</div>
                         <div class="cal-day">20</div>
-                        <!-- Selected date in the mockup -->
+                        
                         <div class="cal-day selected">21</div>
                         <div class="cal-day">22</div>
                         <div class="cal-day">23</div>
@@ -526,8 +473,8 @@
                         <div class="cal-day">28</div>
                     </div>
 
-                    <!-- Time slots , shown after a date is picked -->
-                    <div class="time-slots-label mb-2">Available Times , Friday, Feb 21</div>
+                    
+                    <div class="time-slots-label mb-2">Available Times, Friday, Feb 21</div>
                     <div class="d-flex flex-wrap gap-2">
                         <div class="time-slot booked">9:00 AM</div>
                         <div class="time-slot booked">9:45 AM</div>
@@ -544,7 +491,10 @@
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mt-4">
-                        <small class="text-muted">Strikethrough = already booked</small>
+                        <small class="text-muted">
+                            Strikethrough = already booked
+                            <span class="info-tip" data-bs-toggle="tooltip" title="Booked slots are unavailable.">?</span>
+                        </small>
                         <button class="btn btn-copper">
                             Continue
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -611,13 +561,7 @@
                             </svg>
                             Your info is never shared or sold.
                         </small>
-                        <button class="btn btn-copper btn-lg">
-                            Confirm Booking
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="9 18 15 12 9 6" />
-                            </svg>
-                        </button>
+                        <div class="locked-cta">Complete the steps above to confirm.</div>
                     </div>
 
                 </div>
@@ -665,7 +609,7 @@
                         </div>
 
                         <div class="d-flex align-items-center gap-3 py-2 border-bottom">
-                            <div class="summary-icon empty">
+                            <div class="summary-icon filled">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
@@ -676,12 +620,12 @@
                             </div>
                             <div>
                                 <div class="summary-label">Date</div>
-                                <div class="summary-val empty">Not selected yet</div>
+                                <div class="summary-val">Fri, Feb 21</div>
                             </div>
                         </div>
 
                         <div class="d-flex align-items-center gap-3 py-2">
-                            <div class="summary-icon empty">
+                            <div class="summary-icon filled">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="12" r="10" />
@@ -735,8 +679,6 @@
                 </div>
             </div>
             <!-- END SIDEBAR -->
-
-
         </div>
     </div>
 
@@ -744,6 +686,10 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
+    </script>
 </body>
 
 </html>
