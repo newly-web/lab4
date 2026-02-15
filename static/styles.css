@@ -1,0 +1,775 @@
+
+:root {
+  --cream: #F5F0E8;
+  /* page background              */
+  --espresso: #2B1A0F;
+  /* primary text + dark surfaces */
+  --copper: #C8723A;
+  /* main accent , CTAs, selected */
+  --copper-h: #E8975A;
+  /* copper on hover              */
+  --stone: #8A7968;
+  /* secondary / muted text       */
+  --card-bg: #FFFDF9;
+  /* card / section backgrounds   */
+  --border: #E8E0D0;
+  /* dividers and empty states    */
+  --green: #3D6B4F;
+  /* success states, done steps   */
+
+  --font-d: 'Playfair Display', Georgia, serif;
+  /* headings */
+  --font-b: 'DM Sans', sans-serif;
+  /* body + UI */
+}
+
+
+/* ...
+   BASE
+   ... */
+body {
+  background: var(--cream);
+  font-family: var(--font-b);
+  color: var(--espresso);
+}
+
+
+/*
+   HEADER
+   Dark bar at the very top. Contains the logo on the
+   left and three quick-info chips on the right.
+   On mobile the chips are hidden , Bootstrap's
+   d-none d-md-flex handles that in the HTML.
+    */
+.site-header {
+  background: var(--espresso);
+  border-bottom: 1px solid rgba(200, 114, 58, .2);
+}
+
+.logo-mark {
+  width: 40px;
+  height: 40px;
+  background: var(--copper);
+  border-radius: 10px;
+  font-family: var(--font-d);
+  font-weight: 900;
+  font-size: 18px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-name {
+  font-family: var(--font-d);
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.logo-sub {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.hdr-chip {
+  font-size: 12px;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hdr-chip svg {
+  color: var(--copper);
+  flex-shrink: 0;
+}
+
+.hdr-chip strong {
+  color: #fff;
+}
+
+
+/* ...
+   HERO STRIP
+   Dark gradient banner right below the header.
+   Holds the page title and the short intro copy.
+   ... */
+.hero {
+  background: linear-gradient(135deg, var(--espresso) 0%, #3A2210 100%);
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--copper);
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-family: var(--font-d);
+  font-weight: 900;
+  color: #fff;
+}
+
+.hero p {
+  color: #B5A898;
+  max-width: 420px;
+}
+
+
+/* ...
+   INFO BAR
+   Light bar between the hero and the main content.
+   Shows address, hours, phone, and rating in a 4-col
+   Bootstrap grid. we can  add or remove a column.
+   ... */
+.info-bar {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.info-icon {
+  width: 34px;
+  height: 34px;
+  background: rgba(200, 114, 58, .12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--copper);
+  flex-shrink: 0;
+}
+
+.info-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: var(--stone);
+}
+
+.info-value {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+
+/* ...
+   BOOKING PROGRESS BAR
+   The step indicator at the top of the form area.
+   Each step can be .done (green), .active (copper),
+   or .wait (grey). The connecting lines follow the
+   same logic.
+   ... */
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.prog-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.prog-dot.done {
+  background: var(--green);
+  color: #fff;
+}
+
+.prog-dot.active {
+  background: var(--copper);
+  color: #fff;
+}
+
+.prog-dot.wait {
+  background: var(--border);
+  color: var(--stone);
+}
+
+.prog-label {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.prog-label.active {
+  color: var(--copper);
+}
+
+.prog-label.done {
+  color: var(--green);
+}
+
+.prog-label.wait {
+  color: var(--stone);
+}
+
+.prog-line {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+}
+
+.prog-line.done {
+  background: var(--green);
+}
+
+
+/* ...
+   BOOKING CARD (the white step sections)
+   Every step (service, stylist, date, contact) lives
+   inside one of these. Just a white rounded card with
+   a soft shadow. Add .locked to dim it and block clicks
+   when the user hasn't reached that step yet.
+   ... */
+.booking-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 4px 24px rgba(43, 26, 15, .08);
+}
+
+.locked {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.step-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-d);
+  font-size: 15px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.step-badge.done {
+  background: var(--green);
+  color: #fff;
+}
+
+.step-badge.active {
+  background: var(--espresso);
+  color: #fff;
+}
+
+.step-badge.wait {
+  background: var(--border);
+  color: var(--stone);
+}
+
+.card-title-d {
+  font-family: var(--font-d);
+  font-size: 21px;
+  font-weight: 700;
+}
+
+/* Muted variant for locked steps */
+.card-title-d.muted {
+  color: var(--stone);
+}
+
+.card-sub {
+  font-size: 13px;
+  color: var(--stone);
+}
+
+
+/* ...
+   SERVICE SELECTION CARDS (Step 1)
+   grid of clickable cards. .selected to
+   whichever one the user picks. The .check-badge is
+   hidden by default and shown on .selected.
+   ... */
+.service-card {
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  cursor: pointer;
+  background: var(--card-bg);
+  transition: .18s;
+}
+
+.service-card:hover {
+  border-color: var(--copper);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 114, 58, .12);
+}
+
+.service-card.selected {
+  border-color: var(--copper);
+  background: #FFF6EE;
+  box-shadow: 0 4px 18px rgba(200, 114, 58, .15);
+}
+
+.service-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--copper);
+  flex-shrink: 0;
+}
+
+.service-name {
+  font-family: var(--font-d);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.service-price {
+  font-family: var(--font-d);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.service-duration {
+  font-size: 12px;
+  color: var(--stone);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.service-duration svg {
+  width: 12px;
+  height: 12px;
+  color: var(--stone);
+}
+
+.check-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--copper);
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.check-badge svg {
+  width: 12px;
+  height: 12px;
+}
+
+.service-card.selected .check-badge {
+  display: flex;
+}
+
+
+/* ...
+   TEAM / STYLIST CARDS (Step 2)
+    Same selected/hover logic as the
+   service cards. Each card has an avatar, name, role,
+   bio, and star rating.
+   ... */
+.team-card {
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  cursor: pointer;
+  background: var(--card-bg);
+  text-align: center;
+  transition: .18s;
+}
+
+.team-card:hover {
+  border-color: var(--copper);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 114, 58, .10);
+}
+
+.team-card.selected {
+  border-color: var(--copper);
+  background: #FFF6EE;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  font-family: var(--font-d);
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.avatar-a {
+  background: linear-gradient(135deg, #6B4A3A, #A06B4A);
+}
+
+.avatar-b {
+  background: linear-gradient(135deg, #3A4A6B, #4A6BA0);
+}
+
+.avatar-c {
+  background: linear-gradient(135deg, #3A6B4A, #4AA06B);
+}
+
+.team-name {
+  font-family: var(--font-d);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.team-role {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--copper);
+  font-weight: 700;
+}
+
+.team-bio {
+  font-size: 12px;
+  color: var(--stone);
+}
+
+.stars {
+  color: var(--copper);
+  font-size: 12px;
+}
+
+
+/* ...
+   CALENDAR (Step 3)
+   The month grid uses d-flex flex-wrap gap-1 in
+   Bootstrap so it wraps naturally. Each day is a fixed
+   36x36 square. States: .past, .today, .selected.
+   ... */
+.cal-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--stone);
+  width: 36px;
+  text-align: center;
+}
+
+.cal-month-label {
+  font-family: var(--font-d);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.cal-day {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .15s;
+}
+
+.cal-day:hover:not(.past) {
+  background: rgba(200, 114, 58, .12);
+  color: var(--copper);
+}
+
+.cal-day.selected {
+  background: var(--copper);
+  color: #fff;
+  font-weight: 700;
+}
+
+.cal-day.today {
+  border: 2px solid var(--copper);
+  color: var(--copper);
+  font-weight: 700;
+}
+
+.cal-day.past {
+  color: var(--border);
+  cursor: default;
+}
+
+.cal-day.empty {
+  cursor: default;
+}
+
+.time-slots-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  font-weight: 700;
+  color: var(--stone);
+}
+
+
+/* ...
+   TIME SLOTS
+   Inline pills below the calendar. .booked slots are
+   greyed out and crossed through. .selected is dark.
+   ... */
+.time-slot {
+  padding: 7px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .15s;
+  background: var(--card-bg);
+}
+
+.time-slot:hover:not(.booked) {
+  border-color: var(--copper);
+  color: var(--copper);
+}
+
+.time-slot.selected {
+  background: var(--espresso);
+  color: #fff;
+  border-color: var(--espresso);
+}
+
+.time-slot.booked {
+  color: var(--border);
+  text-decoration: line-through;
+  cursor: default;
+  background: var(--cream);
+  font-size: 12px;
+}
+
+
+/* ...
+   CONTACT FORM 
+   normal Bootstrap inputs, just swapping the default
+   blue focus ring for copper to stay w color theme.
+   ... */
+.form-label-custom {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  font-weight: 700;
+  color: var(--stone);
+}
+
+.form-label-optional {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--stone);
+}
+
+.form-control,
+.form-control:focus {
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--card-bg);
+  font-family: var(--font-b);
+  font-size: 14px;
+  color: var(--espresso);
+  box-shadow: none;
+}
+
+.form-control:focus {
+  border-color: var(--copper);
+  box-shadow: 0 0 0 3px rgba(200, 114, 58, .12);
+}
+
+
+/* ...
+   BUTTONS
+   .btn-copper is the main CTA style used on every
+   "Continue" button. Use .btn-lg on the final
+   "Confirm Booking" , it's intentionally bigger to
+   signal it's the most important action on the page.
+   ... */
+.btn-copper {
+  background: var(--copper);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-b);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 13px 32px;
+  box-shadow: 0 4px 18px rgba(200, 114, 58, .32);
+  transition: .18s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-copper:hover {
+  background: var(--copper-h);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200, 114, 58, .42);
+}
+
+.btn-copper:disabled {
+  background: var(--border);
+  color: var(--stone);
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-copper.btn-lg {
+  padding: 16px 44px;
+  font-size: 16px;
+}
+
+.btn-copper svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* ...
+   SIDEBAR , BOOKING SUMMARY
+   Sticky on desktop (Bootstrap's sticky-top does the
+   work). Shows what the user has picked so far.
+   Fields not yet filled use .empty , italic grey text.
+   ... */
+.summary-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(43, 26, 15, .08);
+}
+
+.summary-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: var(--stone);
+}
+
+.summary-val {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.summary-val.empty {
+  color: var(--stone);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 13px;
+}
+
+.summary-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--copper);
+}
+
+.summary-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.summary-icon.filled {
+  background: rgba(200, 114, 58, .12);
+}
+
+.summary-icon.empty {
+  background: var(--border);
+  color: var(--stone);
+}
+
+.total-box {
+  background: var(--espresso);
+  border-radius: 14px;
+}
+
+.total-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #B5A898;
+}
+
+.total-amount {
+  font-family: var(--font-d);
+  font-size: 30px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.total-dur {
+  font-size: 11px;
+  color: #B5A898;
+}
+
+/* Offset for the sticky sidebar so it clears the header */
+.sidebar-sticky {
+  top: 80px;
+}
+
+
+/*! ... WE NEED TO ADD TOGGLE
+   CONFIRMATION STATE
+   This is the success card shown after the user submits.
+
+   ... */
+.confirm-icon {
+  width: 60px;
+  height: 60px;
+  background: #E6F4EC;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+}
+
+.confirm-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.confirm-title {
+  font-family: var(--font-d);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.confirm-details {
+  background: var(--cream);
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.confirm-cal-link {
+  font-size: 12.5px;
+  color: var(--copper);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.confirm-cal-link:hover {
+  color: var(--copper-h);
+}
